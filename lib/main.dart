@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() => runApp(MaterialApp(
   home: QuoteList(),
@@ -12,10 +13,18 @@ class QuoteList extends StatefulWidget {
 
 class _QuoteListState extends State<QuoteList> {
 
+  /*
   List<String> quotes = [
     'Be yourself; everyone else is already taken',
     'I have nothing to declare except my genious',
     'The trust is rarely pure and never simple'
+  ]; */
+
+  List<Quote> quotes = [
+    Quote(author: 'osca wile', text: 'Be yourself; everyone else is already taken'),
+    Quote(author: 'oscsssa wilecdc', text: 'I have nothing to declare except my genious'),
+    Quote(author: 'oscascddc wilecd', text: 'The trust is rarely pure and never simple')
+
   ];
 
 
@@ -29,25 +38,8 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quotes) => Text(quotes) ).toList(),
+        children: quotes.map((quotes) => Text('autho: ${quotes.author} and text: ${quotes.text}') ).toList(),
       ),
     );
   }
 }
-
-//----------------------------------- Extra -----------------------------------
-//this is for the functions
-/*
-  body: Column(
-    children: quotes.map((quotes) {
-      return Text(quotes);
-    }).toList(),
-),
---------------------------------------------------------------------------
-  it is convert as arrow funtion
-
-  body: Column(
-        children: quotes.map((quotes) => Text(quotes) ).toList(),
-      ),
-
-*/
