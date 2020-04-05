@@ -4,7 +4,15 @@ void main() => runApp(MaterialApp(
   home: RanCard(),
 ));
 
-class RanCard extends StatelessWidget {
+class RanCard extends StatefulWidget {
+  @override
+  _RanCardState createState() => _RanCardState();
+}
+
+class _RanCardState extends State<RanCard> {
+
+  int currentlevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,16 @@ class RanCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            currentlevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
+
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
@@ -57,7 +75,7 @@ class RanCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0,),
             Text(
-              "8",
+              '$currentlevel',
               style: TextStyle(
                 color: Colors.amber,
                 letterSpacing: 2.0,
@@ -90,3 +108,17 @@ class RanCard extends StatelessWidget {
   }
 }
 
+
+
+//create statefull widgets -> stfull
+class Test extends StatefulWidget {
+  @override
+  _TestState createState() => _TestState();
+}
+
+class _TestState extends State<Test> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
