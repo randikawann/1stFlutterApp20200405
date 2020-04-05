@@ -16,7 +16,18 @@ class RanCard extends StatelessWidget {
         elevation: 0.0,
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              "NAME",
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
