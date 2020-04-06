@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_first/main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,7 +13,19 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("World Map"),
       ),
-      body: Center(child: Text("Home Screen")),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            FlatButton.icon(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/location');
+                },
+                icon: Icon(Icons.edit_location),
+                label: Text("Edit Location"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
