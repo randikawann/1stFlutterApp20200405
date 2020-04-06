@@ -14,11 +14,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     //get data from routing
-    data = ModalRoute.of(context).settings.arguments;
+    //use turnary operator
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     print(data);
 
     //selectbackgound image acoording to day and night
     String bgImage = data['isDayTime'] ? 'day.png' : 'night.png';
+
     //topbarcolor
     Color bgcolor = data['isDayTime'] ? Colors.blue : Colors.indigo[700];
 
@@ -37,11 +39,30 @@ class _HomeState extends State<Home> {
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
-                    onPressed: (){
-                      Navigator.pushNamed(context, '/location');
+                    onPressed: () async {
+                      //to go location update
+                      //get back pop value to this place, until those come itshould be wait
+                      dynamic result = await Navigator.pushNamed(context, '/location');
+//                      print('result: $result');
+                      setState(() {
+                        data = {
+                          'location': result['location'],
+                          'flag': result['flag'],
+                          'time': result['time'],
+                          'isDayTime': result['isDayTime'],
+                        };
+                      });
                     },
-                    icon: Icon(Icons.edit_location),
-                    label: Text("Edit Location"),
+                    icon: Icon(
+                        Icons.edit_location,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                        "Edit Location",
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    ),
                 ),
                 SizedBox(height: 20.0),
                 Row(
