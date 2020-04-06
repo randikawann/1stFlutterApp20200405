@@ -13,12 +13,6 @@ class QuoteList extends StatefulWidget {
 
 class _QuoteListState extends State<QuoteList> {
 
-  /*
-  List<String> quotes = [
-    'Be yourself; everyone else is already taken',
-    'I have nothing to declare except my genious',
-    'The trust is rarely pure and never simple'
-  ]; */
 
   List<Quote> quotes = [
     Quote(author: 'osca wile', text: 'Be yourself; everyone else is already taken'),
@@ -26,6 +20,35 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: 'oscascddc wilecd', text: 'The trust is rarely pure and never simple')
 
   ];
+
+  Widget quoteTemplate(quote){
+    return Card(
+      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(
+              "cdc",
+              style: TextStyle(
+                fontSize: 10.0,
+                color: Colors.grey[600],
+              ),
+            ),
+            SizedBox(height: 6.0,),
+            Text(
+              'ddffdfdf',
+              style: TextStyle(
+                fontSize: 10.0,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
 
   @override
@@ -38,7 +61,8 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quotes) => Text('autho: ${quotes.author} and text: ${quotes.text}') ).toList(),
+        children: quotes.map((quote) => quoteTemplate(quote) ).toList(),
+
       ),
     );
   }
